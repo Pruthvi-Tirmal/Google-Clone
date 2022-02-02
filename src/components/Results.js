@@ -23,7 +23,6 @@ const Results = () => {
 
     if (isLoading) return <Loading />
     // switch statement for sending the results like news image or video
-    // location.pathname will be the condition in switch 
     switch (location.pathname) {
         case '/search':
             return (

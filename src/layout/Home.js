@@ -5,7 +5,6 @@ import PrimarySearch from '../components/PrimarySearch';
 const Home = ({ darkTheme }) => {
     return (
         <div>
-            {/* header */}
             <Header darkTheme={darkTheme} />
             <PrimarySearch darkTheme={darkTheme} />
             <Footer />

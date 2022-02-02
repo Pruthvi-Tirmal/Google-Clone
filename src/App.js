@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React, { useState } from 'react'
+import { useResultContext } from './contexts/ResultContextProvider';
+import { useLocation } from 'react-router-dom';
+import Home from './layout/Home';
+import Page from './layout/Page';
+const App = () => {
+  const location = useLocation();
+  const [darkTheme, setDarkTheme] = useState(true)
+  const { searchTerm } = useResultContext();
+  const uri = location.pathname;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={darkTheme ? 'dark' : ''}>
+      <div className="bg-white  dark:bg-DarkBg overflow-hidden dark:text-white transition-colors min-h-screen relative">
+        {searchTerm && uri !== '/' ? (
+          <>
+            <Page setDarkTheme={setDarkTheme} darkTheme={darkTheme} />
+          </>
+        ) : (
+          <Home darkTheme={darkTheme} />
+        )
+        }
+
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
